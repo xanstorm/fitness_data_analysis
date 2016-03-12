@@ -1,11 +1,11 @@
 # fitness_data_analysis
-#Analyzes smart phone fitness data from: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
-#https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip contains all the data and readme files used 
-#in conducting an experiment by the researchers.
+Analyzes smart phone fitness data from: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip contains all the data and readme files used 
+in conducting an experiment by the researchers.
 
-#The analysis I performed took the data files, comprised of the raw data, user ID's, and activities, combined both test and training 
-#data files into a single data set, and then summarized them. Below is a sample of the first ten rows of data. 
-#subject_id activity                                variable        mean
+The analysis I performed took the data files, comprised of the raw data, user ID's, and activities, combined both test and training 
+data files into a single data set, and then summarized them. Below is a sample of the first ten rows of data. 
+subject_id activity                                variable        mean
 1           1  WALKING    Time Domain Signal of BodyAcc-mean-X  0.27733076
 2           1  WALKING    Time Domain Signal of BodyAcc-mean-Y -0.01738382
 3           1  WALKING    Time Domain Signal of BodyAcc-mean-Z -0.11114810
