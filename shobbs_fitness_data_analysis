@@ -1,3 +1,4 @@
+#1 Merges the training and the test sets to create one data set.
 #Overview: Read test data file and create data frame composed of data with column names and change numbers (1,2,3,4,5,6 to
 #activites (i.e., walking) 
 
@@ -47,6 +48,7 @@ train.subject <- read.table("./train/subject_train.txt", header = FALSE) # Reads
 str(train.subject); dim(train.subject) # Looks at structure and dimensions of data, rows by columns
 colnames(train.new) <-c("subject_id","activity", features) # Adds column names to training data
 train.new <- data.frame(subject_id=train.subject[,1], activity=train.label[,1], train) #Creates data frame with colums subject_id, activity, and train data
+#3 Uses descriptive activity names to name the activities in the data set
 train.new$activity <- factor(train.new$activity, levels=1:6, labels=activity) #changes labels 1,2,3,4,5,6 to names of activity:standing, walking, etc.
 colnames(train.new) <-c("subject_id","activity", features)
 head(train.new[,1:5]) # Checks layout of 1st 5 columns to be sure columns are named properly
@@ -54,7 +56,7 @@ data.comb <-rbind(test.new,train.new) # Combines both test and training data int
 ?grep
 library(plyr)
 library(reshape2)
-#2 - extract dataset with measurements like mean and std
+#2 - Extracts only the measurements on the mean and standard deviation for each measurement. 
 col.names <- colnames(data.comb)
 index <- grep(pattern="[Mm]ean|[Ss]td", x=col.names) #Looks for pattern Mean or mean and Std or std in columns
 index
@@ -62,7 +64,7 @@ col.names[index]
 
 data.extract<-data.comb[,c(1,2,index)]
 str(data.extract)
-#4 Change column names to something easily human readable
+#4 Appropriately labels the data set with descriptive variable names. 
 col.names <- colnames(data.extract)
 col.names<-sub(pattern ="^t", replacement="Time Domain Signal of ", x=col.names) #Part of plyr pkg. Replace t with "Time Domain Signal ". Note the space character between Signal and ".
 col.names<-sub(pattern="^f", replacement = "Fast Fourier Transform ", x=col.names) #Replace f with "Fast Fourier Transform ". Note the space character between Transform and ".
@@ -71,7 +73,7 @@ col.names<-sub(pattern="\\)", replacement ="", x=col.names) #Removes right paren
 col.names<-sub(pattern= "^angle", replacement = "Angle of ", x=col.names)
 col.names
 colnames(data.extract) <- col.names
-#5 Second tidy data set of mean
+#5 Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 data.melt<-melt(data.extract, id.vars = c("subject_id","activity")) #Part of reshape2 pkg.Swaps variables and values columns/rows. See http://www.statmethods.net/management/reshape.html
 head(data.melt)
 str(data.melt)
