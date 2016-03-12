@@ -1,4 +1,6 @@
-#Overview: Read test data file and create data frame composed of data with column names and activites (walking) changed from numbers (1-6)
+#Overview: Read test data file and create data frame composed of data with column names and change numbers (1,2,3,4,5,6 to
+#activites (i.e., walking) 
+
 test <- read.table("./test/X_test.txt",header= FALSE, nrow=5)
 test
 test <- read.table("./test/X_test.txt",header= FALSE) # Read and look at the test data
